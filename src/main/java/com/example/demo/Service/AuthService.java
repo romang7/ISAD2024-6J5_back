@@ -1,5 +1,8 @@
-package com.example.demo.Auth;
+package com.example.demo.Service;
 
+import com.example.demo.Auth.AuthResponse;
+import com.example.demo.Auth.LoginRequest;
+import com.example.demo.Auth.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -7,10 +10,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.User.Role;
-import com.example.demo.User.User;
-import com.example.demo.User.UserRepository;
-import com.example.demo.jwt.JwtService;
+import com.example.demo.Entity.Role;
+import com.example.demo.Entity.User;
+import com.example.demo.Repository.UserRepository;
 
 @Service
 @RequiredArgsConstructor

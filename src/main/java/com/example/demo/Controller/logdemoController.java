@@ -1,4 +1,4 @@
-package com.example.demo.logdemo;
+package com.example.demo.Controller;
 
 import lombok.RequiredArgsConstructor;
 
