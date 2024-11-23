@@ -23,7 +23,7 @@ public class ClienteController {
     }
 
     @CrossOrigin("http://localhost:5173")
-    @GetMapping("/{productoId}")
+    @GetMapping("/{clienteId}")
     public Optional<Cliente> getById(@PathVariable("clienteId") Integer clienteId){
         return clienteService.getCliente(clienteId);
     }
