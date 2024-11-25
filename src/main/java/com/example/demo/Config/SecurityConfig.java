@@ -8,11 +8,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.example.demo.Auth.JwtAuthenticaitionFilter;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -31,5 +35,4 @@ public class SecurityConfig {
                 .authenticationProvider(authProvider)
                 .addFilterBefore(jwtAuthenticaitionFilter, UsernamePasswordAuthenticationFilter.class).build();
     }
-
 }
