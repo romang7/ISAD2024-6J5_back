@@ -1,6 +1,8 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Auth.AuthResponse;
+import com.example.demo.Auth.UserResponse;
+import com.example.demo.Repository.UserRepository;
 import com.example.demo.Service.AuthService;
 import com.example.demo.Auth.LoginRequest;
 import com.example.demo.Auth.RegisterRequest;
@@ -15,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 public class AuthController {
 
     private final AuthService authService;
+    private final UserRepository userRepository;
 
     @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping(value = "login")
@@ -26,6 +29,13 @@ public class AuthController {
     @PostMapping(value = "register")
     public ResponseEntity<AuthResponse> register (@RequestBody RegisterRequest request) {
         return ResponseEntity.ok(authService.register(request));
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<UserResponse> getUserByEmail(@RequestParam String email) {
+        return userRepository.findByEmail(email)
+                .map(user -> ResponseEntity.ok(new UserResponse(user.getEmail(), user.getUsername())))
+                .orElse(ResponseEntity.noContent().build());
     }
 
 }

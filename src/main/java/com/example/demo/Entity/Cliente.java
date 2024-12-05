@@ -17,14 +17,43 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "Cl_RFC", unique = true, nullable = false, length = 13)
+    private String rfc;
+
+    @Column(name = "Cl_RazonSocial", nullable = false, length = 100)
+    private String razonSocial;
+
+    @Column(name = "Cl_Nombre", nullable = false, length = 50)
     private String nombre;
 
-    @Column(unique = true, nullable = false)
-    private String email;
+    @Column(name = "Cl_Domicilio", nullable = false, length = 150)
+    private String domicilio;
 
-    @Column(unique = true, nullable = false)
-    private Integer telefono;
+    @Column(name = "Cl_CodigoPostal", nullable = false, length = 10)
+    private String codigoPostal;
 
-    private String direccion;
+    @Column(name = "Cl_Correo", unique = true, nullable = false, length = 50)
+    private String correo;
+
+    @Column(name = "Cl_Telefono", unique = true, nullable = false, length = 20)
+    private String telefono;
+
+    @Column(name = "Cl_Colonia", nullable = false, length = 50)
+    private String colonia;
+
+    @Column(name = "Cl_Ciudad", nullable = false, length = 50)
+    private String ciudad;
+
+    @Column(name = "Cl_Municipio", nullable = false, length = 50)
+    private String municipio;
+
+    @Column(name = "Cl_Estado", nullable = false, length = 50)
+    private String estado;
+
+    @Column(name = "Cl_Pais", nullable = false, length = 50)
+    private String pais;
+
+    @Column(name = "CL_FECHA_REGISTRO")
+    private java.sql.Date fechaRegistro;
 
 }

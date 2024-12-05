@@ -17,14 +17,22 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "PR_NOMBRE", nullable = false, length = 50)
     private String nombre;
 
+    @Column(name = "PR_MARCA", nullable = false, length = 50)
+    private String marca;
+
+    @Column(name = "PR_MODELO", nullable = false, length = 50)
     private String modelo;
 
+    @Column(name = "PR_DESCRIPCION", length = 100)
+    private String descripcion;
+
+    @Column(name = "PR_CANTIDAD")
+    private Integer cantidad;
+
+    @Column(name = "PR_PRECIO", precision = 10)
     private Double precio;
-
-    private String fabricante;
-
-    private Integer inventario;
 
 }

@@ -47,11 +47,4 @@ public class ProductoController {
         productoService.delete(productoId);
     }
 
-    /*
-    @PostMapping(value = "demo")
-    public String welcome() {
-        return "welcome from secure endpoint";
-    }
-    */
-
 }
