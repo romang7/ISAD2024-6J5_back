@@ -21,7 +21,10 @@ public class DemoApplication {
 				registry.addMapping("/**")
 						.allowedOrigins("http://localhost:5173")
 						.allowedMethods("*")
-						.allowedHeaders("*");
+						.allowedHeaders("*")
+						.allowCredentials(true)
+						.allowPrivateNetwork(true)
+						.allowedOriginPatterns("*");
 			}
 		};
 	}

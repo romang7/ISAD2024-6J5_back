@@ -18,6 +18,7 @@ public class ClienteController {
 
     @GetMapping
     public List<Cliente> getAll(){
+
         return clienteService.getCliente();
     }
 
@@ -26,7 +27,7 @@ public class ClienteController {
         return clienteService.getCliente(clienteId);
     }
 
-    @PostMapping
+    @PostMapping()
     public Cliente save(@RequestBody Cliente cliente){
         clienteService.save(cliente);
         return cliente;
@@ -40,6 +41,7 @@ public class ClienteController {
 
     @DeleteMapping("/{clienteId}")
     public void saveUpdate(@PathVariable("clienteId") Integer clienteId){
+
         clienteService.delete(clienteId);
     }
 
