@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Detalle_Material {
 
     @EmbeddedId
-    private Detalle_Matertial_Id id;
+    private Detalle_Material_Id id;
 
     @ManyToOne
     @MapsId("ordenServicioId")

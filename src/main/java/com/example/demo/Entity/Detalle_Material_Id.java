@@ -6,7 +6,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class Detalle_Matertial_Id implements Serializable {
+public class Detalle_Material_Id implements Serializable {
+
     @Column(name = "OS_CLAVE")
     private Integer ordenServicioId;
 

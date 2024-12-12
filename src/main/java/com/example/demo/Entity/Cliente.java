@@ -17,6 +17,7 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column()
     private Integer id;
 
     @Column(unique = true, nullable = false, length = 13)
@@ -25,14 +26,8 @@ public class Cliente {
     @Column(nullable = false, length = 100)
     private String razonSocial;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String nombre;
-
-    @Column(nullable = false, length = 50)
-    private String appaterno;
-
-    @Column(nullable = false, length = 50)
-    private String apmaterno;
 
     @Column(nullable = false, length = 150)
     private String domicilio;
@@ -55,14 +50,14 @@ public class Cliente {
     @Column(nullable = false, length = 50)
     private String ciudad;
 
-    /*@Column(name = "Cl_Municipio", nullable = false, length = 50)
-    private String municipio;*/
+    @Column(name = "Cl_Municipio", nullable = true, length = 50)
+    private String municipio;
 
     @Column(nullable = false, length = 50)
     private String estado;
 
-    /*@Column(name = "Cl_Pais", nullable = false, length = 50)
-    private String pais;*/
+    @Column(name = "Cl_Pais", nullable = true, length = 50)
+    private String pais;
 
     private java.sql.Date fechaRegistro;
 
