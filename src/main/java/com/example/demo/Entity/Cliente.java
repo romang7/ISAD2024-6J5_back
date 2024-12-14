@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -17,48 +17,45 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column()
+    @Column(name = "Cl_ID")
     private Integer id;
 
-    @Column(unique = true, nullable = false, length = 13)
+    @Column(name = "Cl_RFC", unique = true, nullable = false, length = 13)
     private String rfc;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "Cl_RazonSocial", nullable = false, length = 100)
     private String razonSocial;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "Cl_Nombre", nullable = false, length = 100)
     private String nombre;
 
-    @Column(nullable = false, length = 150)
+    @Column(name = "Cl_Domicilio", nullable = false, length = 150)
     private String domicilio;
 
-    @Column(nullable = false, length = 10)
+    @Column(name = "Cl_CodigoPostal", nullable = false, length = 10)
     private String codigoPostal;
 
-    @Column(unique = true, nullable = false, length = 50)
+    @Column(name = "Cl_Correo", unique = true, nullable = false, length = 50)
     private String correo;
 
-    @Column(unique = true, nullable = false, length = 20)
+    @Column(name = "Cl_Telefono", unique = true, nullable = false, length = 20)
     private String telefono;
 
-    @Column(unique = true, nullable = false, length = 50)
-    private String empresa;
-
-    @Column(nullable = false, length = 50)
+    @Column(name = "Cl_Colonia", nullable = false, length = 50)
     private String colonia;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "Cl_Ciudad", nullable = false, length = 50)
     private String ciudad;
 
     @Column(name = "Cl_Municipio", nullable = true, length = 50)
     private String municipio;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "Cl_Estado", nullable = false, length = 50)
     private String estado;
 
     @Column(name = "Cl_Pais", nullable = true, length = 50)
     private String pais;
 
-    private java.sql.Date fechaRegistro;
-
+    @Column(name = "CL_FECHA_REGISTRO")
+    private LocalDate fechaRegistro;
 }

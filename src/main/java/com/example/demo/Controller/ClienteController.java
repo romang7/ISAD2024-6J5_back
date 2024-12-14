@@ -1,6 +1,5 @@
 package com.example.demo.Controller;
 
-
 import com.example.demo.Entity.Cliente;
 import com.example.demo.Service.ClienteService;
 import lombok.RequiredArgsConstructor;
@@ -17,32 +16,29 @@ public class ClienteController {
     private final ClienteService clienteService;
 
     @GetMapping
-    public List<Cliente> getAll(){
-
+    public List<Cliente> getAll() {
         return clienteService.getCliente();
     }
 
-    @GetMapping("/{clienteId}")
-    public Optional<Cliente> getById(@PathVariable("clienteId") Integer clienteId){
-        return clienteService.getCliente(clienteId);
+    @GetMapping("/{id}")
+    public Optional<Cliente> getById(@PathVariable("id") Integer id) {
+        return clienteService.getCliente(id);
     }
 
     @PostMapping()
-    public Cliente save(@RequestBody Cliente cliente){
+    public Cliente save(@RequestBody Cliente cliente) {
         clienteService.save(cliente);
         return cliente;
     }
 
-    @PatchMapping("/{clienteId}")
-    public Cliente Update(@RequestBody Cliente cliente){
-        clienteService.Update(cliente);
+    @PatchMapping("/{id}")
+    public Cliente update(@RequestBody Cliente cliente) {
+        clienteService.update(cliente);
         return cliente;
     }
 
-    @DeleteMapping("/{clienteId}")
-    public void saveUpdate(@PathVariable("clienteId") Integer clienteId){
-
-        clienteService.delete(clienteId);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Integer id) {
+        clienteService.delete(id);
     }
-
 }
