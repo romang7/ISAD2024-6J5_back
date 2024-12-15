@@ -15,24 +15,25 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user", uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
+@Table(name = "USUARIOS")
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Us_ID")
     Integer id;
-    @Column(nullable = false)
+    @Column(name = "Us_Nombre", nullable = false, length = 50)
     String username;
-    @Getter
-    @Column(nullable = false)
+    @Column(name = "Us_Correo", unique = true, nullable = false, length = 50)
     String email;
+    @Column(name = "Us_Contraseña", nullable = false, length = 70)
     String password;
-    @Column(nullable = true)
+    @Column(name = "Us_Codigo", nullable = false, length = 50)
     String regcode;
-    @Column(nullable = false)
+    @Column(name = "Us_Verificado", nullable = false)
     Boolean registrado;
-    @Enumerated(EnumType.STRING)
-    Role role;
+    @Column(name = "Us_Rol", nullable = false, length = 50)
+    Integer role;
 
     @Override
     public String getUsername(){
@@ -41,7 +42,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority("1"));
     }
 
     @Override

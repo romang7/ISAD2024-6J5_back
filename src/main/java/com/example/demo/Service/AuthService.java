@@ -38,7 +38,6 @@ public class AuthService {
         return AuthResponse.builder()
                 .token(token)
                 .build();
-
     }
 
     public RegResponse register(RegisterRequest request) {
@@ -52,7 +51,7 @@ public class AuthService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .regcode(tk) // Guardar el código en el campo correspondiente
                 .registrado(false)
-                .role(Role.USER)
+                .role(1)
                 .build();
 
         // Guardar el usuario en la base de datos

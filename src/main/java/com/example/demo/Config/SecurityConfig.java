@@ -9,14 +9,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
+import org.springframework.web.cors.CorsConfigurationSource;
 import com.example.demo.Auth.JwtAuthenticaitionFilter;
-
 import lombok.RequiredArgsConstructor;
 
-import java.util.List;
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -28,11 +26,36 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(authRequest -> authRequest.requestMatchers("/auth/**")
-                .permitAll().anyRequest().authenticated())
-                .sessionManagement(sessionManager -> sessionManager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        return http
+                .csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Habilitar CORS
+                .authorizeHttpRequests(authRequest -> authRequest
+                        .requestMatchers("/auth/**").permitAll() // Permitir endpoints públicos
+                        .anyRequest().authenticated()) // Otros endpoints requieren autenticación
+                .sessionManagement(sessionManager -> sessionManager
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Stateless session
                 .authenticationProvider(authProvider)
-                .addFilterBefore(jwtAuthenticaitionFilter, UsernamePasswordAuthenticationFilter.class).build();
+                .addFilterBefore(jwtAuthenticaitionFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
+    }
+
+    // Configuración CORS
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173")); // Origen permitido
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Métodos permitidos
+        configuration.setAllowedHeaders(Arrays.asList("*")); // Permitir todos los encabezados
+        configuration.setAllowCredentials(true); // Permitir credenciales (opcional si usas cookies, auth headers, etc.)
+
+        // Asignar configuración a la URL base
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+
+        // Excluir la configuración CORS en las rutas bajo /auth/**
+        CorsConfiguration noCorsConfig = new CorsConfiguration();
+        source.registerCorsConfiguration("/auth/**", noCorsConfig); // Sin reglas de CORS en /auth
+
+        return source;
     }
 }
