@@ -47,15 +47,9 @@ public class SecurityConfig {
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Métodos permitidos
         configuration.setAllowedHeaders(Arrays.asList("*")); // Permitir todos los encabezados
         configuration.setAllowCredentials(true); // Permitir credenciales (opcional si usas cookies, auth headers, etc.)
-
         // Asignar configuración a la URL base
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
-
-        // Excluir la configuración CORS en las rutas bajo /auth/**
-        CorsConfiguration noCorsConfig = new CorsConfiguration();
-        source.registerCorsConfiguration("/auth/**", noCorsConfig); // Sin reglas de CORS en /auth
-
         return source;
     }
 }

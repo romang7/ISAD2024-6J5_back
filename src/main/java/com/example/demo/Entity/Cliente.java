@@ -58,4 +58,7 @@ public class Cliente {
 
     @Column(name = "CL_FECHA_REGISTRO")
     private LocalDate fechaRegistro;
+
+    @Column(name = "CL_FOTO_URL", nullable = true, length = 100)
+    private String img_url;
 }

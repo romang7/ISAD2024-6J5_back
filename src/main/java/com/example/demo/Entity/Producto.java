@@ -38,4 +38,7 @@ public class Producto {
 
     @Column(name = "PR_PRECIO", precision = 10, scale = 2)
     private BigDecimal precio;
+
+    @Column(name = "PR_FOTO_URL", nullable = true, length = 100)
+    private String img_url;
 }
