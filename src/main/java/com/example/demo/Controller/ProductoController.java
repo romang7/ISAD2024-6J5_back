@@ -15,33 +15,28 @@ public class ProductoController {
 
     private final ProductoService productoService;
 
-    @CrossOrigin("http://localhost:5173")
     @GetMapping
     public List<Producto> getAll(){
         return productoService.getProducto();
     }
 
-    @CrossOrigin("http://localhost:5173")
     @GetMapping("/{productoId}")
     public Optional<Producto> getById(@PathVariable("productoId") Integer productoId){
         return productoService.getProducto(productoId);
     }
 
-    @CrossOrigin("http://localhost:5173")
     @PostMapping
     public Producto save(@RequestBody Producto producto){
         productoService.save(producto);
         return producto;
     }
 
-    @CrossOrigin("http://localhost:5173")
     @PatchMapping("/{productoId}")
     public Producto Update(@RequestBody Producto producto){
         productoService.Update(producto);
         return producto;
     }
 
-    @CrossOrigin("http://localhost:5173")
     @DeleteMapping("/{productoId}")
     public void saveUpdate(@PathVariable("productoId") Integer productoId){
         productoService.delete(productoId);

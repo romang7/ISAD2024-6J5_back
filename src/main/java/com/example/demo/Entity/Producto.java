@@ -6,15 +6,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "PRODUCTO")
 public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PR_ID")
     private Integer id;
 
     @Column(name = "PR_NOMBRE", nullable = false, length = 50)
@@ -32,7 +36,9 @@ public class Producto {
     @Column(name = "PR_CANTIDAD")
     private Integer cantidad;
 
-    @Column(name = "PR_PRECIO", precision = 10)
-    private Double precio;
+    @Column(name = "PR_PRECIO", precision = 10, scale = 2)
+    private BigDecimal precio;
 
+    @Column(name = "PR_FOTO_URL", nullable = true, length = 100)
+    private String img_url;
 }

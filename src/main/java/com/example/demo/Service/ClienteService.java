@@ -8,12 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
-public class ClienteService  {
+public class ClienteService {
 
     @Autowired
-    ClienteRepository clienteRepository;
+    private ClienteRepository clienteRepository;
 
     public List<Cliente> getCliente() {
         return clienteRepository.findAll();
@@ -27,7 +26,7 @@ public class ClienteService  {
         clienteRepository.save(cliente);
     }
 
-    public void Update(Cliente cliente) {
+    public void update(Cliente cliente) {
         clienteRepository.save(cliente);
     }
 

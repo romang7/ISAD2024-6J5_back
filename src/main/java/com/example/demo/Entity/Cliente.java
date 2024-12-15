@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -15,6 +17,7 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Cl_ID")
     private Integer id;
 
     @Column(name = "Cl_RFC", unique = true, nullable = false, length = 13)
@@ -23,7 +26,7 @@ public class Cliente {
     @Column(name = "Cl_RazonSocial", nullable = false, length = 100)
     private String razonSocial;
 
-    @Column(name = "Cl_Nombre", nullable = false, length = 50)
+    @Column(name = "Cl_Nombre", nullable = false, length = 100)
     private String nombre;
 
     @Column(name = "Cl_Domicilio", nullable = false, length = 150)
@@ -44,16 +47,18 @@ public class Cliente {
     @Column(name = "Cl_Ciudad", nullable = false, length = 50)
     private String ciudad;
 
-    @Column(name = "Cl_Municipio", nullable = false, length = 50)
+    @Column(name = "Cl_Municipio", nullable = true, length = 50)
     private String municipio;
 
     @Column(name = "Cl_Estado", nullable = false, length = 50)
     private String estado;
 
-    @Column(name = "Cl_Pais", nullable = false, length = 50)
+    @Column(name = "Cl_Pais", nullable = true, length = 50)
     private String pais;
 
     @Column(name = "CL_FECHA_REGISTRO")
-    private java.sql.Date fechaRegistro;
+    private LocalDate fechaRegistro;
 
+    @Column(name = "CL_FOTO_URL", nullable = true, length = 100)
+    private String img_url;
 }
