@@ -20,11 +20,6 @@ public class ProductoController {
         return productoService.getProducto();
     }
 
-    @GetMapping("/{productoId}")
-    public Optional<Producto> getById(@PathVariable("productoId") Integer productoId){
-        return productoService.getProducto(productoId);
-    }
-
     @PostMapping
     public Producto save(@RequestBody Producto producto){
         productoService.save(producto);

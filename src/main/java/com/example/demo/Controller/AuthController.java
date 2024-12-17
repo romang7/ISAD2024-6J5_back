@@ -1,15 +1,17 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Auth.*;
+import com.example.demo.Entity.Producto;
 import com.example.demo.Repository.UserRepository;
 import com.example.demo.Service.AuthService;
+import com.example.demo.Service.ProductoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
-
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
@@ -17,6 +19,7 @@ public class AuthController {
 
     private final AuthService authService;
     private final UserRepository userRepository;
+    private final ProductoService productoService;
 
     @PostMapping(value = "login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
@@ -70,5 +73,10 @@ public class AuthController {
     public ResponseEntity<Map<String, Boolean>> verificarUsuario(@RequestParam String email) {
         boolean existe = userRepository.findByEmail(email).isPresent();
         return ResponseEntity.ok(Map.of("existe", existe));
+    }
+
+    @GetMapping("producto")
+    public List<Producto> getAll(){
+        return productoService.getProducto();
     }
 }
